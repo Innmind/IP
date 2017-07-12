@@ -1,0 +1,33 @@
+{
+    "name": "innmind/ip",
+    "type": "library",
+    "description": "IP addresses model",
+    "keywords": ["ip", "address"],
+    "homepage": "http://github.com/Innmind/IP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Baptiste Langlade",
+            "email": "langlade.baptiste@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/Innmind/IP/issues"
+    },
+    "require": {
+        "php": "~7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Innmind\\IP\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Innmind\\IP\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    }
+}
