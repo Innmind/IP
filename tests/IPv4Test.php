@@ -3,7 +3,10 @@ declare(strict_types = 1);
 
 namespace Tests\Innmind\IP;
 
-use Innmind\IP\IPv4;
+use Innmind\IP\{
+    IPv4,
+    IP
+};
 use PHPUnit\Framework\TestCase;
 
 class IPv4Test extends TestCase
@@ -13,6 +16,7 @@ class IPv4Test extends TestCase
      */
     public function testInterface($address)
     {
+        $this->assertInstanceOf(IP::class, new IPv4($address));
         $this->assertSame($address, (string) new IPv4($address));
     }
 

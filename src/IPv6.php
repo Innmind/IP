@@ -5,7 +5,7 @@ namespace Innmind\IP;
 
 use Innmind\IP\Exception\AddressNotMatchingIPv6Format;
 
-final class IPv6
+final class IPv6 implements IP
 {
     private $address;
 

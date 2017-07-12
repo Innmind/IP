@@ -5,7 +5,7 @@ namespace Innmind\IP;
 
 use Innmind\IP\Exception\AddressNotMatchingIPv4Format;
 
-final class IPv4
+final class IPv4 implements IP
 {
     private $address;
 

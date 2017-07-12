@@ -3,7 +3,10 @@ declare(strict_types = 1);
 
 namespace Tests\Innmind\IP;
 
-use Innmind\IP\IPv6;
+use Innmind\IP\{
+    IPv6,
+    IP
+};
 use PHPUnit\Framework\TestCase;
 
 class IPv6Test extends TestCase
@@ -13,6 +16,7 @@ class IPv6Test extends TestCase
      */
     public function testInterface($address)
     {
+        $this->assertInstanceOf(IP::class, new IPv6($address));
         $this->assertSame($address, (string) new IPv6($address));
     }
 
