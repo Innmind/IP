@@ -7,15 +7,20 @@ use Innmind\IP\Exception\AddressNotMatchingIPv6Format;
 
 final class IPv6 implements IP
 {
-    private $address;
+    private string $address;
 
-    public function __construct(string $address)
+    private function __construct(string $address)
     {
-        if (!filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        if (!\filter_var($address, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV6)) {
             throw new AddressNotMatchingIPv6Format($address);
         }
 
         $this->address = $address;
+    }
+
+    public static function of(string $address): self
+    {
+        return new self($address);
     }
 
     public static function localhost(): self
@@ -28,7 +33,7 @@ final class IPv6 implements IP
         return $this->address === $self->address;
     }
 
-    public function __toString(): string
+    public function toString(): string
     {
         return $this->address;
     }

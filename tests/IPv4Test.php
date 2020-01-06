@@ -5,7 +5,8 @@ namespace Tests\Innmind\IP;
 
 use Innmind\IP\{
     IPv4,
-    IP
+    IP,
+    Exception\AddressNotMatchingIPv4Format,
 };
 use PHPUnit\Framework\TestCase;
 
@@ -16,14 +17,14 @@ class IPv4Test extends TestCase
      */
     public function testInterface($address)
     {
-        $this->assertInstanceOf(IP::class, new IPv4($address));
-        $this->assertSame($address, (string) new IPv4($address));
+        $this->assertInstanceOf(IP::class, IPv4::of($address));
+        $this->assertSame($address, IPv4::of($address)->toString());
     }
 
     public function testEquals()
     {
-        $this->assertTrue((new IPv4('127.0.0.1'))->equals(new IPv4('127.0.0.1')));
-        $this->assertFalse((new IPv4('127.0.0.1'))->equals(new IPv4('127.0.0.2')));
+        $this->assertTrue(IPv4::of('127.0.0.1')->equals(IPv4::of('127.0.0.1')));
+        $this->assertFalse(IPv4::of('127.0.0.1')->equals(IPv4::of('127.0.0.2')));
     }
 
     public function testLocalhost()
@@ -31,23 +32,23 @@ class IPv4Test extends TestCase
         $ip = IPv4::localhost();
 
         $this->assertInstanceOf(IPv4::class, $ip);
-        $this->assertTrue($ip->equals(new IPv4('127.0.0.1')));
+        $this->assertTrue($ip->equals(IPv4::of('127.0.0.1')));
     }
 
-    /**
-     * @expectedException Innmind\IP\Exception\AddressNotMatchingIPv4Format
-     */
     public function testThrowWhenInvalidFormat()
     {
-        new IPv4('localhost');
+        $this->expectException(AddressNotMatchingIPv4Format::class);
+        $this->expectExceptionMessage('localhost');
+
+        IPv4::of('localhost');
     }
 
-    /**
-     * @expectedException Innmind\IP\Exception\AddressNotMatchingIPv4Format
-     */
     public function testThrowWhenOutOfBound()
     {
-        new IPv4('256.0.0.1');
+        $this->expectException(AddressNotMatchingIPv4Format::class);
+        $this->expectExceptionMessage('256.0.0.1');
+
+        IPv4::of('256.0.0.1');
     }
 
     public function addresses(): array
