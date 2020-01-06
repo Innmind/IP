@@ -16,14 +16,14 @@ class IPv6Test extends TestCase
      */
     public function testInterface($address)
     {
-        $this->assertInstanceOf(IP::class, new IPv6($address));
+        $this->assertInstanceOf(IP::class, IPv6::of($address));
         $this->assertSame($address, IPv6::of($address)->toString());
     }
 
     public function testEquals()
     {
-        $this->assertTrue((new IPv6('::1'))->equals(new IPv6('::1')));
-        $this->assertFalse((new IPv6('::1'))->equals(new IPv6('::2')));
+        $this->assertTrue(IPv6::of('::1')->equals(IPv6::of('::1')));
+        $this->assertFalse(IPv6::of('::1')->equals(IPv6::of('::2')));
     }
 
     public function testLocalhost()
@@ -31,7 +31,7 @@ class IPv6Test extends TestCase
         $ip = IPv6::localhost();
 
         $this->assertInstanceOf(IPv6::class, $ip);
-        $this->assertTrue($ip->equals(new IPv6('::1')));
+        $this->assertTrue($ip->equals(IPv6::of('::1')));
     }
 
     /**
@@ -39,7 +39,7 @@ class IPv6Test extends TestCase
      */
     public function testThrowWhenInvalidFormat()
     {
-        new IPv6('localhost');
+        IPv6::of('localhost');
     }
 
     /**
@@ -47,7 +47,7 @@ class IPv6Test extends TestCase
      */
     public function testThrowWhenOutOfBound()
     {
-        new IPv6('::z');
+        IPv6::of('::z');
     }
 
     public function addresses(): array
