@@ -11,7 +11,7 @@ final class IPv4 implements IP
 
     public function __construct(string $address)
     {
-        if (!filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+        if (!\filter_var($address, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV4)) {
             throw new AddressNotMatchingIPv4Format($address);
         }
 

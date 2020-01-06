@@ -11,7 +11,7 @@ final class IPv6 implements IP
 
     public function __construct(string $address)
     {
-        if (!filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+        if (!\filter_var($address, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV6)) {
             throw new AddressNotMatchingIPv6Format($address);
         }
 
