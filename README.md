@@ -1,10 +1,9 @@
 # IP
 
-| `master` | `develop` |
-|----------|-----------|
-| [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Innmind/IP/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Innmind/IP/?branch=master) | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Innmind/IP/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/Innmind/IP/?branch=develop) |
-| [![Code Coverage](https://scrutinizer-ci.com/g/Innmind/IP/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Innmind/IP/?branch=master) | [![Code Coverage](https://scrutinizer-ci.com/g/Innmind/IP/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/Innmind/IP/?branch=develop) |
-| [![Build Status](https://scrutinizer-ci.com/g/Innmind/IP/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Innmind/IP/build-status/master) | [![Build Status](https://scrutinizer-ci.com/g/Innmind/IP/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/Innmind/IP/build-status/develop) |
+| `develop` |
+|-----------|
+| [![codecov](https://codecov.io/gh/Innmind/IP/branch/develop/graph/badge.svg)](https://codecov.io/gh/Innmind/IP) |
+| [![Build Status](https://github.com/Innmind/IP/workflows/CI/badge.svg)](https://github.com/Innmind/IP/actions?query=workflow%3ACI) |
 
 IP value objects
 
