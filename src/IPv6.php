@@ -7,7 +7,7 @@ use Innmind\IP\Exception\AddressNotMatchingIPv6Format;
 
 final class IPv6 implements IP
 {
-    private $address;
+    private string $address;
 
     private function __construct(string $address)
     {

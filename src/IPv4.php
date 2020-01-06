@@ -7,7 +7,7 @@ use Innmind\IP\Exception\AddressNotMatchingIPv4Format;
 
 final class IPv4 implements IP
 {
-    private $address;
+    private string $address;
 
     private function __construct(string $address)
     {
