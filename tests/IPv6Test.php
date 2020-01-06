@@ -5,7 +5,8 @@ namespace Tests\Innmind\IP;
 
 use Innmind\IP\{
     IPv6,
-    IP
+    IP,
+    Exception\AddressNotMatchingIPv6Format,
 };
 use PHPUnit\Framework\TestCase;
 
@@ -34,19 +35,19 @@ class IPv6Test extends TestCase
         $this->assertTrue($ip->equals(IPv6::of('::1')));
     }
 
-    /**
-     * @expectedException Innmind\IP\Exception\AddressNotMatchingIPv6Format
-     */
     public function testThrowWhenInvalidFormat()
     {
+        $this->expectException(AddressNotMatchingIPv6Format::class);
+        $this->expectExceptionMessage('localhost');
+
         IPv6::of('localhost');
     }
 
-    /**
-     * @expectedException Innmind\IP\Exception\AddressNotMatchingIPv6Format
-     */
     public function testThrowWhenOutOfBound()
     {
+        $this->expectException(AddressNotMatchingIPv6Format::class);
+        $this->expectExceptionMessage('::z');
+
         IPv6::of('::z');
     }
 
