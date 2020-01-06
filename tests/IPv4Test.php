@@ -17,7 +17,7 @@ class IPv4Test extends TestCase
     public function testInterface($address)
     {
         $this->assertInstanceOf(IP::class, new IPv4($address));
-        $this->assertSame($address, (new IPv4($address))->toString());
+        $this->assertSame($address, IPv4::of($address)->toString());
     }
 
     public function testEquals()

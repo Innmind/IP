@@ -18,6 +18,11 @@ final class IPv6 implements IP
         $this->address = $address;
     }
 
+    public static function of(string $address): self
+    {
+        return new self($address);
+    }
+
     public static function localhost(): self
     {
         return new self('::1');
