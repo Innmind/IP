@@ -5,5 +5,5 @@ namespace Innmind\IP;
 
 interface IP
 {
-    public function __toString(): string;
+    public function toString(): string;
 }

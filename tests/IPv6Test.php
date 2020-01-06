@@ -17,7 +17,7 @@ class IPv6Test extends TestCase
     public function testInterface($address)
     {
         $this->assertInstanceOf(IP::class, new IPv6($address));
-        $this->assertSame($address, (string) new IPv6($address));
+        $this->assertSame($address, (new IPv6($address))->toString());
     }
 
     public function testEquals()

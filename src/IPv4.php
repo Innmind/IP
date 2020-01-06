@@ -28,7 +28,7 @@ final class IPv4 implements IP
         return $this->address === $self->address;
     }
 
-    public function __toString(): string
+    public function toString(): string
     {
         return $this->address;
     }
