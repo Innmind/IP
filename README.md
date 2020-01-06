@@ -18,11 +18,11 @@ require innmind/ip
 ```php
 use Innmind\IP\{
     IPv4,
-    IPv6
+    IPv6,
 };
 
-$ipv4 = new IPv4('192.168.0.1');
-$ipv6 = new IPv6('2001:db8:a0b:12f0::1');
-new IPv4('localhost'); //throws AddressNotMatchingIPv4Format
-new IPv6('localhost'); //throws AddressNotMatchingIPv6Format
+$ipv4 = IPv4::of('192.168.0.1');
+$ipv6 = IPv6::of('2001:db8:a0b:12f0::1');
+IPv4::of('localhost'); //throws AddressNotMatchingIPv4Format
+IPv6::of('localhost'); //throws AddressNotMatchingIPv6Format
 ```
