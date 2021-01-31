@@ -1,9 +1,8 @@
 # IP
 
-| `develop` |
-|-----------|
-| [![codecov](https://codecov.io/gh/Innmind/IP/branch/develop/graph/badge.svg)](https://codecov.io/gh/Innmind/IP) |
-| [![Build Status](https://github.com/Innmind/IP/workflows/CI/badge.svg)](https://github.com/Innmind/IP/actions?query=workflow%3ACI) |
+[![Build Status](https://github.com/innmind/IP/workflows/CI/badge.svg?branch=master)](https://github.com/innmind/IP/actions?query=workflow%3ACI)
+[![codecov](https://codecov.io/gh/innmind/IP/branch/develop/graph/badge.svg)](https://codecov.io/gh/innmind/IP)
+[![Type Coverage](https://shepherd.dev/github/innmind/IP/coverage.svg)](https://shepherd.dev/github/innmind/IP)
 
 IP value objects
 
