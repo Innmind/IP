@@ -21,7 +21,7 @@ abstract class IP
         $this->address = $address;
     }
 
-    public static function v4(string $address): IPv4
+    final public static function v4(string $address): IPv4
     {
         if (!\filter_var($address, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV4)) {
             throw new AddressNotMatchingIPv4Format($address);
@@ -31,7 +31,7 @@ abstract class IP
         return new IPv4($address);
     }
 
-    public static function v6(string $address): IPv6
+    final public static function v6(string $address): IPv6
     {
         if (!\filter_var($address, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV6)) {
             throw new AddressNotMatchingIPv6Format($address);
@@ -41,7 +41,7 @@ abstract class IP
         return new IPv6($address);
     }
 
-    public function equals(self $self): bool
+    final public function equals(self $self): bool
     {
         return $this->address === $self->address;
     }
@@ -49,7 +49,7 @@ abstract class IP
     /**
      * @return non-empty-string
      */
-    public function toString(): string
+    final public function toString(): string
     {
         return $this->address;
     }
