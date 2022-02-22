@@ -15,7 +15,7 @@
         "issues": "http://github.com/Innmind/IP/issues"
     },
     "require": {
-        "php": "~7.4|~8.0",
+        "php": "~8.0",
         "innmind/immutable": "~4.1"
     },
     "autoload": {
