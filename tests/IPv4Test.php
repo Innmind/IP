@@ -6,7 +6,7 @@ namespace Tests\Innmind\IP;
 use Innmind\IP\{
     IPv4,
     IP,
-    Exception\AddressNotMatchingIPv4Format,
+    Exception\DomainException,
 };
 use PHPUnit\Framework\TestCase;
 
@@ -19,11 +19,16 @@ class IPv4Test extends TestCase
     {
         $this->assertInstanceOf(IP::class, IPv4::of($address));
         $this->assertSame($address, IPv4::of($address)->toString());
+        $this->assertSame($address, IPv4::maybe($address)->match(
+            static fn($ip) => $ip->toString(),
+            static fn() => null,
+        ));
     }
 
     public function testEquals()
     {
         $this->assertTrue(IPv4::of('127.0.0.1')->equals(IPv4::of('127.0.0.1')));
+        $this->assertTrue(IP::v4('127.0.0.1')->equals(IPv4::of('127.0.0.1')));
         $this->assertFalse(IPv4::of('127.0.0.1')->equals(IPv4::of('127.0.0.2')));
     }
 
@@ -37,7 +42,7 @@ class IPv4Test extends TestCase
 
     public function testThrowWhenInvalidFormat()
     {
-        $this->expectException(AddressNotMatchingIPv4Format::class);
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('localhost');
 
         IPv4::of('localhost');
@@ -45,10 +50,18 @@ class IPv4Test extends TestCase
 
     public function testThrowWhenOutOfBound()
     {
-        $this->expectException(AddressNotMatchingIPv4Format::class);
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('256.0.0.1');
 
         IPv4::of('256.0.0.1');
+    }
+
+    public function testMaybeReturnNothingForInvalidAddress()
+    {
+        $this->assertNull(IPv4::maybe('localhost')->match(
+            static fn($ip) => $ip->toString(),
+            static fn() => null,
+        ));
     }
 
     public function addresses(): array
