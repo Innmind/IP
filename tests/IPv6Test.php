@@ -6,7 +6,7 @@ namespace Tests\Innmind\IP;
 use Innmind\IP\{
     IPv6,
     IP,
-    Exception\AddressNotMatchingIPv6Format,
+    Exception\DomainException,
 };
 use PHPUnit\Framework\TestCase;
 
@@ -19,6 +19,10 @@ class IPv6Test extends TestCase
     {
         $this->assertInstanceOf(IP::class, IPv6::of($address));
         $this->assertSame($address, IPv6::of($address)->toString());
+        $this->assertSame($address, IPv6::maybe($address)->match(
+            static fn($ip) => $ip->toString(),
+            static fn() => null,
+        ));
     }
 
     public function testEquals()
@@ -38,7 +42,7 @@ class IPv6Test extends TestCase
 
     public function testThrowWhenInvalidFormat()
     {
-        $this->expectException(AddressNotMatchingIPv6Format::class);
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('localhost');
 
         IPv6::of('localhost');
@@ -46,10 +50,18 @@ class IPv6Test extends TestCase
 
     public function testThrowWhenOutOfBound()
     {
-        $this->expectException(AddressNotMatchingIPv6Format::class);
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('::z');
 
         IPv6::of('::z');
+    }
+
+    public function testMaybeReturnNothingForInvalidAddress()
+    {
+        $this->assertNull(IPv6::maybe('localhost')->match(
+            static fn($ip) => $ip->toString(),
+            static fn() => null,
+        ));
     }
 
     public function addresses(): array
