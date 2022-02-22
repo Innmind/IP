@@ -24,6 +24,7 @@ class IPv6Test extends TestCase
     public function testEquals()
     {
         $this->assertTrue(IPv6::of('::1')->equals(IPv6::of('::1')));
+        $this->assertTrue(IP::v6('::1')->equals(IPv6::of('::1')));
         $this->assertFalse(IPv6::of('::1')->equals(IPv6::of('::2')));
     }
 

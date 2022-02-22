@@ -24,6 +24,7 @@ class IPv4Test extends TestCase
     public function testEquals()
     {
         $this->assertTrue(IPv4::of('127.0.0.1')->equals(IPv4::of('127.0.0.1')));
+        $this->assertTrue(IP::v4('127.0.0.1')->equals(IPv4::of('127.0.0.1')));
         $this->assertFalse(IPv4::of('127.0.0.1')->equals(IPv4::of('127.0.0.2')));
     }
 
