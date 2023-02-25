@@ -6,19 +6,30 @@ namespace Innmind\IP;
 use Innmind\IP\Exception\DomainException;
 use Innmind\Immutable\Maybe;
 
+/**
+ * @psalm-immutable
+ */
 final class IPv4 extends IP
 {
+    /**
+     * @psalm-pure
+     */
     public static function of(string $address): self
     {
         return IP::v4($address);
     }
 
+    /**
+     * @psalm-pure
+     */
     public static function localhost(): self
     {
         return self::of('127.0.0.1');
     }
 
     /**
+     * @psalm-pure
+     *
      * @return Maybe<self>
      */
     public static function maybe(string $address): Maybe
