@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- `Innmind\IP\IPv4::attempt()`
+- `Innmind\IP\IPv6::attempt()`
+
 ### Changed
 
 - Require PHP `8.4`

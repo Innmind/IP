@@ -3,8 +3,10 @@ declare(strict_types = 1);
 
 namespace Innmind\IP;
 
-use Innmind\IP\Exception\DomainException;
-use Innmind\Immutable\Maybe;
+use Innmind\Immutable\{
+    Maybe,
+    Attempt,
+};
 
 /**
  * @psalm-immutable
@@ -34,11 +36,16 @@ final class IPv6 extends IP
      */
     public static function maybe(string $address): Maybe
     {
-        try {
-            return Maybe::just(self::of($address));
-        } catch (DomainException $e) {
-            /** @var Maybe<self> */
-            return Maybe::nothing();
-        }
+        return self::attempt($address)->maybe();
+    }
+
+    /**
+     * @psalm-pure
+     *
+     * @return Attempt<self>
+     */
+    public static function attempt(string $address): Attempt
+    {
+        return Attempt::of(static fn() => self::of($address));
     }
 }
