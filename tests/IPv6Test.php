@@ -8,13 +8,12 @@ use Innmind\IP\{
     IP,
     Exception\DomainException,
 };
-use PHPUnit\Framework\TestCase;
+use Innmind\BlackBox\PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class IPv6Test extends TestCase
 {
-    /**
-     * @dataProvider addresses
-     */
+    #[DataProvider('addresses')]
     public function testInterface($address)
     {
         $this->assertInstanceOf(IP::class, IPv6::of($address));
@@ -64,7 +63,7 @@ class IPv6Test extends TestCase
         ));
     }
 
-    public function addresses(): array
+    public static function addresses(): array
     {
         return [
             ['0:0:0:0:0:0:0:1'],
