@@ -16,6 +16,7 @@ final class IPv6 extends IP
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function of(string $address): self
     {
         return IP::v6($address);
@@ -24,6 +25,7 @@ final class IPv6 extends IP
     /**
      * @psalm-pure
      */
+    #[\NoDiscard]
     public static function localhost(): self
     {
         return self::of('::1');
@@ -34,6 +36,7 @@ final class IPv6 extends IP
      *
      * @return Maybe<self>
      */
+    #[\NoDiscard]
     public static function maybe(string $address): Maybe
     {
         return self::attempt($address)->maybe();
@@ -44,6 +47,7 @@ final class IPv6 extends IP
      *
      * @return Attempt<self>
      */
+    #[\NoDiscard]
     public static function attempt(string $address): Attempt
     {
         return Attempt::of(static fn() => self::of($address));

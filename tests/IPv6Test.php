@@ -43,7 +43,7 @@ class IPv6Test extends TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage('localhost');
 
-        IPv6::of('localhost');
+        $_ = IPv6::of('localhost');
     }
 
     public function testThrowWhenOutOfBound()
@@ -51,7 +51,7 @@ class IPv6Test extends TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage('::z');
 
-        IPv6::of('::z');
+        $_ = IPv6::of('::z');
     }
 
     public function testMaybeReturnNothingForInvalidAddress()
