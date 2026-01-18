@@ -14,7 +14,7 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
-    <disableExtensions>
-        <extension name="random" />
-    </disableExtensions>
+    <issueHandlers>
+        <UndefinedAttributeClass errorLevel="suppress" />
+    </issueHandlers>
 </psalm>

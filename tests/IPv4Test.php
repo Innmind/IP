@@ -43,7 +43,7 @@ class IPv4Test extends TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage('localhost');
 
-        IPv4::of('localhost');
+        $_ = IPv4::of('localhost');
     }
 
     public function testThrowWhenOutOfBound()
@@ -51,7 +51,7 @@ class IPv4Test extends TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage('256.0.0.1');
 
-        IPv4::of('256.0.0.1');
+        $_ = IPv4::of('256.0.0.1');
     }
 
     public function testMaybeReturnNothingForInvalidAddress()
