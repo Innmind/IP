@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.0.0 - 2026-01-18
+
+### Added
+
+- `Innmind\IP\IPv4::attempt()`
+- `Innmind\IP\IPv6::attempt()`
+
+### Changed
+
+- Require PHP `8.4`
+
+### Removed
+
+- `Innmind\IP\Exception\Exception`
+- `Innmind\IP\Exception\DomainException`
+
 ## 3.2.0 - 2023-09-16
 
 ### Added

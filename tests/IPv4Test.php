@@ -6,15 +6,13 @@ namespace Tests\Innmind\IP;
 use Innmind\IP\{
     IPv4,
     IP,
-    Exception\DomainException,
 };
-use PHPUnit\Framework\TestCase;
+use Innmind\BlackBox\PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class IPv4Test extends TestCase
 {
-    /**
-     * @dataProvider addresses
-     */
+    #[DataProvider('addresses')]
     public function testInterface($address)
     {
         $this->assertInstanceOf(IP::class, IPv4::of($address));
@@ -42,18 +40,18 @@ class IPv4Test extends TestCase
 
     public function testThrowWhenInvalidFormat()
     {
-        $this->expectException(DomainException::class);
+        $this->expectException(\DomainException::class);
         $this->expectExceptionMessage('localhost');
 
-        IPv4::of('localhost');
+        $_ = IPv4::of('localhost');
     }
 
     public function testThrowWhenOutOfBound()
     {
-        $this->expectException(DomainException::class);
+        $this->expectException(\DomainException::class);
         $this->expectExceptionMessage('256.0.0.1');
 
-        IPv4::of('256.0.0.1');
+        $_ = IPv4::of('256.0.0.1');
     }
 
     public function testMaybeReturnNothingForInvalidAddress()
@@ -64,7 +62,7 @@ class IPv4Test extends TestCase
         ));
     }
 
-    public function addresses(): array
+    public static function addresses(): array
     {
         return [
             ['0.0.0.0'],
