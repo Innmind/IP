@@ -2,7 +2,10 @@
     "name": "innmind/ip",
     "type": "library",
     "description": "IP addresses model",
-    "keywords": ["ip", "address"],
+    "keywords": [
+        "ip",
+        "address"
+    ],
     "homepage": "http://github.com/Innmind/IP",
     "license": "MIT",
     "authors": [
